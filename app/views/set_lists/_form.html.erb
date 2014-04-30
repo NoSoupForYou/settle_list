@@ -1,0 +1,29 @@
+<%= form_for(@set_list) do |f| %>
+  <% if @set_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@set_list.errors.count, "error") %> prohibited this set_list from being saved:</h2>
+
+      <ul>
+      <% @set_list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :artist_id %><br>
+    <%= f.text_field :artist_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

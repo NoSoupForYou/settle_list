@@ -11,13 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140430022814) do
+ActiveRecord::Schema.define(version: 20140430033146) do
 
   create_table "artists", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "set_list_items", force: true do |t|
+    t.integer  "position"
+    t.integer  "set_list_id"
+    t.integer  "song_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "set_list_items", ["set_list_id"], name: "index_set_list_items_on_set_list_id"
+  add_index "set_list_items", ["song_id"], name: "index_set_list_items_on_song_id"
+
+  create_table "set_lists", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "artist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "set_lists", ["artist_id"], name: "index_set_lists_on_artist_id"
 
   create_table "songs", force: true do |t|
     t.string   "title"
