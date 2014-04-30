@@ -8,7 +8,21 @@
 </head>
 <body>
 
+<header>
+  <h1>
+    <%= link_to 'SettleList', root_path %>
+    <span style="font-size: 0.75em; font-weight: normal;">
+      <%= link_to 'Artists', artists_path %>
+      <%= link_to 'Songs', songs_path %>
+    </span>
+  </h1>
+</header>
+
 <%= yield %>
+
+<footer>
+  <h5>A <a href="http://pixelkeg.com">pixelkeg</a> Project &copy; 2014 Glenn Gentzke</h5>
+</footer>
 
 </body>
 </html>

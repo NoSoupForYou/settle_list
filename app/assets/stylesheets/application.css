@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+header {
+  border-bottom: dotted gray 1px;
+}
+header a, header a:visited, header a:hover {
+  background-color: white;
+  color: black;
+  text-decoration: none;
+}
+
+footer {
+  border-top: dotted gray 1px;
+  margin-top: 30px;
+  padding-top: 0;
+}
