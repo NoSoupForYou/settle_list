@@ -5,5 +5,16 @@
   <%= @artist.name %>
 </p>
 
+<% unless @artist.songs.empty? -%>
+  <p><strong>Song List:</strong></p>
+  <ol>
+    <% @artist.songs.each do |song| %>
+      <li><%= song.title %></li>
+    <% end %>
+  </ol>
+<% else %>
+  <p>This artist has no songs.</p>
+<% end %>
+
 <%= link_to 'Edit', edit_artist_path(@artist) %> |
 <%= link_to 'Back', artists_path %>

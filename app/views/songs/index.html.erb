@@ -3,7 +3,10 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Title</th>
+      <th>Duration</th>
+      <th>Tags</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -12,7 +15,7 @@
       <tr>
         <td><%= song.title %></td>
         <td>(<%= song.duration %>)</td>
-        <td><%= link_to 'Show', song %></td>
+        <td><%= raw song.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
         <td><%= link_to 'Edit', edit_song_path(song) %></td>
         <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

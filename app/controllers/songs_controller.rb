@@ -4,7 +4,11 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.all
+    if params[:tag]
+      @songs = Song.tagged_with params[:tag]
+    else
+      @songs = Song.all
+    end
   end
 
   # GET /songs/1
@@ -69,6 +73,6 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit([:title, :duration])
+      params.require(:song).permit(:title, :duration, :tag_list)
     end
 end

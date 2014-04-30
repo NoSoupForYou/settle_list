@@ -21,6 +21,16 @@
     <%= f.text_field :duration %>
   </div>
 
+  <h3>Tagging</h3>
+  <p>
+    Tags are the details needed for "intelligent" set list creation. A tag can be the songs tuning (E, A, Bb); a declarative adjective (opener, ender, break, !opener); or whatever you want!
+  </p>
+  
+  <div class="field">
+    <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+    <%= f.text_field :tag_list %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
