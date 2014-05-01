@@ -1,4 +1,4 @@
-<h1>Listing set_lists</h1>
+<h1>Listing SetLists</h1>
 
 <table>
   <thead>
@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Artist</th>
+      <th>Length</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +16,11 @@
       <tr>
         <td><%= set_list.name %></td>
         <td><%= set_list.description %></td>
-        <td><%= set_list.artist %></td>
+        <td><%= set_list.artist.name %></td>
+        <td>
+          <%= duration_to_human(set_list.songs.map(&:duration).sum) %>
+          <%= "(#{pluralize(set_list.songs.count, 'song')})" %>
+        </td>
         <td><%= link_to 'Show', set_list %></td>
         <td><%= link_to 'Edit', edit_set_list_path(set_list) %></td>
         <td><%= link_to 'Destroy', set_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>

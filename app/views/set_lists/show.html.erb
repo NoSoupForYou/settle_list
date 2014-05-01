@@ -12,8 +12,19 @@
 
 <p>
   <strong>Artist:</strong>
-  <%= @set_list.artist %>
+  <%= @set_list.artist.name %>
 </p>
+
+<% unless @set_list.songs.empty? -%>
+  <p><strong>Song List:</strong></p>
+  <ol>
+    <% @set_list.songs.each do |song| %>
+      <li><%= song.title %></li>
+    <% end %>
+  </ol>
+<% else %>
+  <p>This SetList has no songs.</p>
+<% end %>
 
 <%= link_to 'Edit', edit_set_list_path(@set_list) %> |
 <%= link_to 'Back', set_lists_path %>
