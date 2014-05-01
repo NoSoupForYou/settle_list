@@ -14,3 +14,11 @@ SettleList is a Rails application that hopes to settle a common dispute among ba
 - Easy share links
 - Mobile interface
 - **Chaos Engine™** <-- the secret sauce!!
+ - Relational tagging
+ - Intelligent SetList generation based on tags and preferences
+ - Sliding-scale chaos from preset SetList to completely random
+
+### Current Features
+- Create artists, songs, setlists
+- Tag songs
+- Search songs by tag
