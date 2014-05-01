@@ -16,7 +16,7 @@
     <% @songs.each do |song| %>
       <tr>
         <td><%= song.title %></td>
-        <td>(<%= song.duration %>)</td>
+        <td>(<%= duration_to_human(song.duration) %>)</td>
         <td><%= raw song.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
         <td><%= link_to 'Edit', edit_song_path(song) %></td>
         <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>

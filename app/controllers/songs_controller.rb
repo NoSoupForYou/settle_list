@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  include ApplicationHelper # for duration converters
+
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -61,6 +63,7 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
+      params[:duration] = duration_from_human(params[:duration])
       params.require(:song).permit(:artist_id, :duration, :tag_list, :title)
     end
 end
