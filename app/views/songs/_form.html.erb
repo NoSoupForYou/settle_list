@@ -21,6 +21,10 @@
     <%= f.text_field :duration %>
   </div>
 
+  <div classs="field">
+    <%= f.select :artist_id, Artist.all.collect { |a| [ a.name, a.id ] }, { prompt: 'Select an Artist' } %>
+  </div>
+
   <h3>Tagging</h3>
   <p>
     Tags are the details needed for "intelligent" set list creation. A tag can be the songs tuning (E, A, Bb); a declarative adjective (opener, ender, break, !opener); or whatever you want!
