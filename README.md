@@ -13,10 +13,13 @@ SettleList is a Rails application that hopes to settle a common dispute among ba
 - Drag-n-drop set list ordering
 - Easy share links
 - Mobile interface
+- Print-for-group
+- Shows archive
 - **Chaos Engine™** <-- the secret sauce!!
  - Relational tagging
  - Intelligent SetList generation based on tags and preferences
  - Sliding-scale chaos from preset SetList to completely random
+ - Request the hits / Request a fresh SetList
 
 ### Current Features
 - Create artists, songs, setlists
