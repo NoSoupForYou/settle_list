@@ -1,10 +1,21 @@
-<h1>Listing songs</h1>
+<h1>Song Listing</h1>
 
 <p id="notice"><%= notice %></p>
+
+<h3>Song tags:</h3>
+<div id="tag_cloud">
+  <% tag_cloud Song.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+  <em><%= link_to "Reset Filter", songs_path %></em>
+</div>
+
+<hr />
 
 <table>
   <thead>
     <tr>
+      <th>Artist</th>
       <th>Title</th>
       <th>Duration</th>
       <th>Tags</th>
@@ -15,6 +26,7 @@
   <tbody>
     <% @songs.each do |song| %>
       <tr>
+        <td><%= song.artist.name %></td>
         <td><%= song.title %></td>
         <td>(<%= duration_to_human(song.duration) %>)</td>
         <td><%= raw song.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
