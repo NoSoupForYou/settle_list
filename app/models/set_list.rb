@@ -21,10 +21,14 @@ class SetList < ActiveRecord::Base
   # 2. Find an opener and move it to the top
   # 3. Find a closer and move to the bottom
   # 4. Group tuning tags together
-  def smart_sort
+  def smart_sort!
     raise ArtistMissingException, "An artist is required to generate a SetList!" unless artist_id
-    song_pool = songs.empty? ? artist.songs(true).to_a : songs(true).to_a
+    self.name ||= "Smart Sort SetList"
+    self.songs = artist.songs(true) if self.songs.empty?
+    save! if self.changed?
+
     shuffle!
+    song_pool = songs.to_a
 
     opener = take_song_by_tag('opener', song_pool)
     if opener.present?
