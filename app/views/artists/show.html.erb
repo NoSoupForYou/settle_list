@@ -5,6 +5,34 @@
   <%= @artist.name %>
 </p>
 
+<p>
+  <%= link_to "<strong>Generate a Smart Sort set list!</strong>".html_safe, generate_set_lists_path(artist_id: @artist.id, type: 'smart_sort') %>
+</p>
+
+<% unless @artist.set_lists.empty? -%>
+  <p><strong>Set Lists:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @artist.set_lists.each do |list| %>
+        <tr>
+          <td><%= list.name %></td>
+          <td><%= link_to 'Show', list %></td>
+          <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>This artist has no set lists.</p>
+<% end %>
+
 <% unless @artist.songs.empty? -%>
   <p><strong>Song List:</strong></p>
   <ol>

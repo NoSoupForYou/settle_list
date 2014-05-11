@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :set_lists
+  resources :set_lists do
+    collection do
+      get :generate
+    end
+  end
 
   resources :songs
 

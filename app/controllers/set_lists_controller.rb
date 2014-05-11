@@ -61,6 +61,16 @@ class SetListsController < ApplicationController
     end
   end
 
+  def generate
+    if params[:artist_id].present? && params[:type] == 'smart_sort'
+      @set_list = SetList.new artist_id: params[:artist_id]
+      @set_list.smart_sort!
+      redirect_to @set_list
+    else
+      redirect_to :index
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_set_list
