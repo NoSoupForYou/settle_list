@@ -8,4 +8,8 @@ class Song < ActiveRecord::Base
   validates_presence_of :title
   validates :duration, numericality: { greater_than_or_equal_to: 0 }
 
+  def tagged_with?(tag)
+    tag_list.include?(tag)
+  end
+
 end
