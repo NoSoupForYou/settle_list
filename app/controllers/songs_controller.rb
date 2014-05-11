@@ -7,7 +7,7 @@ class SongsController < ApplicationController
     if params[:tag]
       @songs = Song.tagged_with params[:tag]
     else
-      @songs = Song.all
+      @songs = Song.all.sort_by{ |s| s.artist.name }
     end
   end
 
@@ -26,7 +26,7 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       if @song.save
-        format.html { redirect_to redirect_to songs_path, notice: 'Song was successfully created.' }
+        format.html { redirect_to songs_path, notice: 'Song was successfully created.' }
         format.json { render :show, status: :created, location: @song }
       else
         format.html { render :new }
