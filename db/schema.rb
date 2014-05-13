@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140430033146) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "artists", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -27,8 +30,8 @@ ActiveRecord::Schema.define(version: 20140430033146) do
     t.datetime "updated_at"
   end
 
-  add_index "set_list_items", ["set_list_id"], name: "index_set_list_items_on_set_list_id"
-  add_index "set_list_items", ["song_id"], name: "index_set_list_items_on_song_id"
+  add_index "set_list_items", ["set_list_id"], name: "index_set_list_items_on_set_list_id", using: :btree
+  add_index "set_list_items", ["song_id"], name: "index_set_list_items_on_song_id", using: :btree
 
   create_table "set_lists", force: true do |t|
     t.string   "name"
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140430033146) do
     t.datetime "updated_at"
   end
 
-  add_index "set_lists", ["artist_id"], name: "index_set_lists_on_artist_id"
+  add_index "set_lists", ["artist_id"], name: "index_set_lists_on_artist_id", using: :btree
 
   create_table "songs", force: true do |t|
     t.string   "title"
@@ -58,13 +61,13 @@ ActiveRecord::Schema.define(version: 20140430033146) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
 
   create_table "tags", force: true do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
 end
