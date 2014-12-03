@@ -26,4 +26,3 @@ SettleList is a Rails application that hopes to settle a common dispute among ba
 - Tag songs
 - Search songs by tag
 - Generate set lists - SettleList tries to intelligently select an opener and closer and shuffles the other songs to keep set order fresh.
-.
