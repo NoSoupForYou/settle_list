@@ -43,7 +43,6 @@ class SetList < ActiveRecord::Base
     else
       # TODO: ensure closing spot isn't taken by !closer
     end
-    pp
   end
 
   def shuffle!
